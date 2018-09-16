@@ -1,7 +1,7 @@
 // DO WHATEVER YOU WANT HERE
 
 const createEnumerableProperty = (propertyName) => {
-        return propertyName
+        return propertyName;
     }
 ;
 
@@ -59,25 +59,13 @@ let j = 0;
 
 const asyncIncrementor = () => {
     return new Promise(resolve => {
-
         let temp = i;
-
         i = j;
-
         j = temp;
 
-
-        // i = [j, j = i][0];  ///
-
         incrementor();
-
-        // let a=i;
-        //i = [j, j = i][0];
-
         temp = i;
-
         i = j;
-
         j = temp;
         resolve(temp);
 
@@ -101,20 +89,35 @@ const returnBackInSecond = (param) =>{
 
 
 };
-const getDeepPropertiesCount = () =>
-{
-}
-;
+const getDeepPropertiesCount = (object) => {
+    let count=0;
+    countOfProperties(object);
+    function countOfProperties(object) {
+        for (let key in object) {
+            if (typeof( object[key] === 'object')) {
+                count++;
+                countOfProperties(object[key]);
+            }
+        }
+    }
+    return count;
+};
 const createSerializedObject = () =>
 {
+    return null;
 }
 ;
 const toBuffer = () =>
 {}
+
+
+
 ;
-const sortByProto = () =>
-{}
+const sortByProto = (arr) =>
+{ return arr.sort();}
 ;
+
+
 
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;
